@@ -30,6 +30,11 @@
         <xacro:if value="${mode == 'gazebo'}">
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </xacro:if>
+        <xacro:if value="${mode == 'isaac'}">
+          <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
+          <param name="joint_commands_topic">/isaac_joint_commands</param>
+          <param name="joint_states_topic">/isaac_joint_states</param>
+        </xacro:if>
       </hardware>
       <joint name="${prefix}joint_1">
         <command_interface name="position"/>
